@@ -8,7 +8,7 @@ assert.equal(pageText('<h1>Welcome</h1><script>secret()</script><p>Local busines
 const oldKey = process.env.OPENROUTER_API_KEY
 delete process.env.OPENROUTER_API_KEY
 const res = { setHeader() {}, status(code) { this.code = code; return this }, json(value) { this.body = value; return this } }
-await handler({method:'POST',headers:{},body:{action:'design',prompt:'warm'}},res)
+await handler({method:'POST',headers:{'content-type':'application/json'},body:{action:'design',prompt:'warm'}},res)
 assert.equal(res.code,503)
 assert.equal(res.body.error,'AI is not configured yet.')
 if (oldKey !== undefined) process.env.OPENROUTER_API_KEY = oldKey
@@ -21,13 +21,24 @@ globalThis.fetch = async (_url, options) => {
   return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify({ '--accent':'#123456','--paper':'#ffffff','--ink':'#111111','--deep':'#222222','--warm':'#eeeeee', unwanted:'ignored' }) } }] }), { status: 200 })
 }
 const success = { setHeader() {}, status(code) { this.code = code; return this }, json(value) { this.body = value; return this } }
-await handler({method:'POST',headers:{'x-forwarded-for':'198.51.100.9'},body:{action:'design',prompt:'warm and friendly'}},success)
+await handler({method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'198.51.100.9'},body:{action:'design',prompt:'warm and friendly'}},success)
 assert.equal(success.code,200)
 assert.equal(success.body['--accent'],'#123456')
 assert.equal(success.body.unwanted,undefined)
 const rejected = { setHeader() {}, status(code) { this.code = code; return this }, json(value) { this.body = value; return this } }
-await handler({method:'POST',headers:{'x-forwarded-for':'198.51.100.10'},body:{action:'website',url:'http://127.0.0.1'}},rejected)
+await handler({method:'POST',headers:{'content-type':'application/json','x-forwarded-for':'198.51.100.10'},body:{action:'website',url:'http://127.0.0.1'}},rejected)
 assert.equal(rejected.code,502)
+for (const [request, expected] of [
+  [{method:'GET',headers:{}},405],
+  [{method:'POST',headers:{'content-type':'text/plain'},body:{}},415],
+  [{method:'POST',headers:{'content-type':'application/json','content-length':'9000'},body:{}},413],
+  [{method:'POST',headers:{'content-type':'application/json'},body:{action:'design',prompt:'warm',admin:true}},400],
+  [{method:'POST',headers:{'content-type':'application/json'},body:[]},400],
+]) {
+  const result = { setHeader() {}, status(code) { this.code = code; return this }, json(value) { this.body = value; return this } }
+  await handler(request, result)
+  assert.equal(result.code,expected)
+}
 globalThis.fetch = originalFetch
 if (oldKey === undefined) delete process.env.OPENROUTER_API_KEY; else process.env.OPENROUTER_API_KEY = oldKey
 console.log('AI safety and unconfigured-response checks passed.')

@@ -57,6 +57,9 @@ async function askOpenRouter(prompt, key) {
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store')
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed.' })
+  if (!/^application\/json(?:\s*;|$)/i.test(String(req.headers['content-type'] || ''))) return res.status(415).json({ error: 'Use JSON for this request.' })
+  const contentLength = Number(req.headers['content-length'] || 0)
+  if (!Number.isFinite(contentLength) || contentLength < 0 || contentLength > 8192) return res.status(413).json({ error: 'Request is too large.' })
   if (!process.env.OPENROUTER_API_KEY) return res.status(503).json({ error: 'AI is not configured yet.' })
   // This local-instance guard limits bursts, but is not a distributed spending cap.
   const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim()
@@ -65,7 +68,8 @@ export default async function handler(req, res) {
   recent.push(now); buckets.set(ip, recent)
   if (buckets.size > 1000) for (const [key, times] of buckets) if (now - times[times.length - 1] > 60000) buckets.delete(key)
   const body = req.body
-  if (!body || typeof body !== 'object') return res.status(400).json({ error: 'Invalid request.' })
+  if (!body || typeof body !== 'object' || Array.isArray(body) || Buffer.byteLength(JSON.stringify(body), 'utf8') > 8192) return res.status(400).json({ error: 'Invalid request.' })
+  if (!['design', 'website'].includes(body.action) || Object.keys(body).some(key => !['action', body.action === 'design' ? 'prompt' : 'url'].includes(key))) return res.status(400).json({ error: 'Invalid request.' })
   try {
     if (body.action === 'design') {
       if (typeof body.prompt !== 'string' || !body.prompt.trim() || body.prompt.length > 500) return res.status(400).json({ error: 'Describe the look in 500 characters or less.' })
