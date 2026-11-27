@@ -1,12 +1,29 @@
 // Product photos, names and example prices are referenced from the linked retailer pages.
 const products = [
-  {id:'1344184',brand:'Purina',name:'Meat Bird Non-Medicated Crumbles Chicken Feed, 40 lb. Bag',category:'Feed & poultry',price:25.99,source:'https://www.tractorsupply.com/tsc/brand/Purina/poultry/f/Shop%20now%21'},
-  {id:'2306264',brand:'Carhartt',name:"Men's Firm Duck Flat Brim Cap",category:'Workwear',price:27.99,source:'https://www.tractorsupply.com/tsc/product/carhartt-firm-duck-flat-brim-cap-2306264'},
+  {id:'1344184',brand:'Purina',name:'Meat Bird Non-Medicated Crumbles Chicken Feed, 40 lb. Bag',category:'Feed & poultry',price:25.99,salePrice:22.09,deal:'Black Friday demo deal',source:'https://www.tractorsupply.com/tsc/brand/Purina/poultry/f/Shop%20now%21'},
+  {id:'2306264',brand:'Carhartt',name:"Men's Firm Duck Flat Brim Cap",category:'Workwear',price:27.99,salePrice:22.39,deal:'Black Friday demo deal',source:'https://www.tractorsupply.com/tsc/product/carhartt-firm-duck-flat-brim-cap-2306264'},
   {id:'1043962',brand:'Manna Pro',name:'Poultry Grit with Probiotics, 25 lb.',category:'Feed & poultry',price:15.99,source:'https://www.tractorsupply.com/tsc/brand/Manna%2BPro/poultry'},
-  {id:'2409006',brand:'KONG',name:'Classic Dog Toy, Large',category:'Pet',price:14.99,source:'https://www.tractorsupply.com/tsc/product/kong-classic-2409006'},
+  {id:'2409006',brand:'KONG',name:'Classic Dog Toy, Large',category:'Pet',price:14.99,salePrice:11.99,deal:'Holiday demo deal',source:'https://www.tractorsupply.com/tsc/product/kong-classic-2409006'},
   {id:'7520899',brand:'Carhartt',name:"Men's Acrylic Knit Beanie Winter Hat",category:'Workwear',price:19.99,source:'https://www.tractorsupply.com/tsc/product/carhartt-acrylic-knit-hat-7520899'},
+  {"id": "2061535", "brand": "Standlee", "name": "Alfalfa Forage Bites Very Berry Horse Treats, 5 lb.", "category": "Horse", "price": 12.99, "source": "https://www.tractorsupply.com/tsc/product/standlee-alfalfa-forage-bites-very-berry-flavor-1175-41012-0-0-2061535"},
+  {"id": "1336641", "brand": "DuMOR", "name": "Baker’s Bites Baked Molasses Horse Treats, 4 lb.", "category": "Horse", "price": 7.49, "source": "https://www.tractorsupply.com/tsc/product/dumor-dumor-baked-molasses-bakers-bites-4-lb-1336641"},
+  {"id": "5023956", "brand": "Manna Pro", "name": "Apple Flavor Wafer Horse Treats, 20 lb.", "category": "Horse", "price": 22.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-apple-wafers-20-lb-5023956"},
+  {"id": "1256813", "brand": "Manna Pro", "name": "Nutrigood Low Sugar Apple Horse Treats, 4 lb.", "category": "Horse", "price": 16.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-nutrigood-low-sugar-apple-treats-4-lb-1256813"},
+  {"id": "1336640", "brand": "DuMOR", "name": "Baker’s Bites Baked Peppermint Horse Treats, 4 lb.", "category": "Horse", "price": 7.49, "source": "https://www.tractorsupply.com/tsc/product/dumor-dumor-baked-peppermint-bakers-bites-4-lb-1336640", "salePrice": 5.99, "deal": "Holiday demo deal"},
+  {"id": "2525030", "brand": "Manna Pro", "name": "Oyster Shell Poultry Treats, 50 lb.", "category": "Feed & poultry", "price": 17.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-oyster-shell-50-lb-2525030", "salePrice": 15.29, "deal": "Holiday demo deal"},
+  {"id": "1246046", "brand": "Manna Pro", "name": "Hen Healer Ointment, 2 oz.", "category": "Feed & poultry", "price": 11.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-mp-hen-healer-ointment-2-oz-1000216-1246046"},
+  {"id": "1014698", "brand": "Manna Pro", "name": "Poultry Protector Coop Bug Spray, 16 oz.", "category": "Feed & poultry", "price": 17.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-poultry-protector-16-oz-1014698"},
+  {"id": "1312768", "brand": "Manna Pro", "name": "Hydro Hen Drinking Water Supplement, 8 oz.", "category": "Feed & poultry", "price": 11.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-hydro-hen-8-oz-1030209-1312768"},
+  {"id": "1025907", "brand": "Manna Pro", "name": "Coop-N-Compost Odor Neutralizer, 1.75 lb.", "category": "Feed & poultry", "price": 12.99, "source": "https://www.tractorsupply.com/tsc/product/manna-pro-coop-n-compost-175-lb-1025907"},
+  {"id": "1654948", "brand": "Royal Wing", "name": "Total Care Gourmet Wildlife Food, 14 lb.", "category": "Bird & wildlife", "price": 35.99, "source": "https://www.tractorsupply.com/tsc/product/royal-wing-total-care-wildlife-supreme-with-vegetables-wildlife-food-14-lb-1654948"},
+  {"id": "1654947", "brand": "Royal Wing", "name": "Total Care No Waste Big Bites Wild Bird Food, 5 lb.", "category": "Bird & wildlife", "price": 15.49, "source": "https://www.tractorsupply.com/tsc/product/royal-wing-total-care-no-waste-big-bites-wild-bird-food-5-lb-1654947", "salePrice": 12.39, "deal": "Holiday demo deal"},
+  {"id": "1654946", "brand": "Royal Wing", "name": "Total Care No Waste Chopped Blend Wild Bird Food, 5 lb.", "category": "Bird & wildlife", "price": 15.99, "source": "https://www.tractorsupply.com/tsc/product/royal-wing-total-care-no-waste-chopped-blend-5-lb-1654946"},
+  {"id": "6860856", "brand": "Royal Wing", "name": "Select Finch Mix Wild Bird Food, 10 lb.", "category": "Bird & wildlife", "price": 20.99, "source": "https://www.tractorsupply.com/tsc/product/royal-wing-select-finch-mix-wild-bird-food-10-lb-6860856"},
+  {"id": "1363587", "brand": "Royal Wing", "name": "Total Care Gourmet High-Protein Wild Bird Food, 5.5 lb.", "category": "Bird & wildlife", "price": 13.99, "source": "https://www.tractorsupply.com/tsc/product/royal-wing-total-care-total-care-high-protein-mix-with-suet-pellets-55-lb-1363587"},
 ]
 const money = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n)
+const priceOf = p => p.salePrice ?? p.price
+const priceMarkup = p => p.salePrice ? `<span class="sale-label">${p.deal}</span><span class="sale-price">Demo ${money(p.salePrice)}</span> <del>${money(p.price)}</del>` : money(p.price)
 const grid = document.querySelector('#products')
 const count = document.querySelector('#result-count')
 const empty = document.querySelector('#no-results')
@@ -26,26 +43,26 @@ function renderProducts() {
   const term = search.value.trim().toLowerCase()
   const category = radios.find(radio => radio.checked)?.value || 'All'
   const shown = products.filter(p => (category === 'All' || p.category === category) && (p.name+' '+p.brand+' '+p.category).toLowerCase().includes(term))
-  if (sort.value === 'low') shown.sort((a,b) => a.price-b.price)
-  if (sort.value === 'high') shown.sort((a,b) => b.price-a.price)
+  if (sort.value === 'low') shown.sort((a,b) => priceOf(a)-priceOf(b))
+  if (sort.value === 'high') shown.sort((a,b) => priceOf(b)-priceOf(a))
   if (sort.value === 'name') shown.sort((a,b) => a.name.localeCompare(b.name))
   count.textContent = `${shown.length} ${shown.length === 1 ? 'item' : 'items'}`
   empty.hidden = shown.length !== 0
-  grid.innerHTML = shown.map(p => `<article class="product-card"><div class="product-image"><img src="./assets/${p.id}.jpg" width="600" height="600" alt="${p.brand} ${p.name}" loading="lazy"></div><p class="product-category">${p.category} / ${p.brand}</p><h3>${p.name}</h3><p class="price">${money(p.price)}</p><a class="source-link" href="${p.source}" target="_blank" rel="noopener noreferrer">View product source</a><button class="add-cart" type="button" data-add="${p.id}" aria-label="Add ${p.brand} ${p.name} to demo cart">Add to cart</button></article>`).join('')
+  grid.innerHTML = shown.map(p => `<article class="product-card"><div class="product-image"><img src="./assets/${p.id}.jpg" width="600" height="600" alt="${p.brand} ${p.name}" loading="lazy"></div><p class="product-category">${p.category} / ${p.brand}</p><h3>${p.name}</h3><p class="price">${priceMarkup(p)}</p><a class="source-link" href="${p.source}" target="_blank" rel="noopener noreferrer">View product source</a><button class="add-cart" type="button" data-add="${p.id}" aria-label="Add ${p.brand} ${p.name} to demo cart">Add to cart</button></article>`).join('')
 }
 function renderCart() {
   const selected = products.filter(p => cart[p.id])
-  const total = selected.reduce((sum,p) => sum + p.price * cart[p.id],0)
+  const total = selected.reduce((sum,p) => sum + priceOf(p) * cart[p.id],0)
   document.querySelector('.cart-count').textContent = selected.reduce((sum,p) => sum + cart[p.id],0)
   document.querySelector('#subtotal').textContent = money(total)
   document.querySelector('#checkout-total').textContent = money(total)
   checkout.disabled = !selected.length
-  cartItems.innerHTML = selected.length ? selected.map(p => `<article class="cart-item"><img src="./assets/${p.id}.jpg" alt=""><div><h3>${p.brand} ${p.name}</h3><p>${money(p.price)}</p><div class="quantity"><button type="button" data-action="minus" data-id="${p.id}" aria-label="Remove one ${p.name}">−</button><span aria-label="Quantity">${cart[p.id]}</span><button type="button" data-action="plus" data-id="${p.id}" aria-label="Add one ${p.name}">+</button><button type="button" class="remove" data-action="remove" data-id="${p.id}">Remove</button></div></div></article>`).join('') : '<p class="cart-empty">Your cart is empty. Take a look around the shelves.</p>'
+  cartItems.innerHTML = selected.length ? selected.map(p => `<article class="cart-item"><img src="./assets/${p.id}.jpg" alt=""><div><h3>${p.brand} ${p.name}</h3><p>${p.salePrice ? 'Demo deal: ' : ''}${money(priceOf(p))}</p><div class="quantity"><button type="button" data-action="minus" data-id="${p.id}" aria-label="Remove one ${p.name}">−</button><span aria-label="Quantity">${cart[p.id]}</span><button type="button" data-action="plus" data-id="${p.id}" aria-label="Add one ${p.name}">+</button><button type="button" class="remove" data-action="remove" data-id="${p.id}">Remove</button></div></div></article>`).join('') : '<p class="cart-empty">Your cart is empty. Take a look around the shelves.</p>'
   try { sessionStorage.setItem('barn-demo-cart',JSON.stringify(cart)) } catch {}
 }
 function openCart() { drawer.hidden = false; backdrop.hidden = false; drawer.setAttribute('aria-hidden','false'); cartButton.setAttribute('aria-expanded','true'); document.querySelector('.close-cart').focus() }
 function closeCart() { drawer.hidden = true; backdrop.hidden = true; drawer.setAttribute('aria-hidden','true'); cartButton.setAttribute('aria-expanded','false'); cartButton.focus() }
-grid.addEventListener('click',event => { const button=event.target.closest('[data-add]'); if(!button) return; cart[button.dataset.add] = Math.min((cart[button.dataset.add] || 0)+1,99); renderCart(); openCart() })
+document.querySelector('main').addEventListener('click',event => { const button=event.target.closest('[data-add]'); if(!button) return; cart[button.dataset.add] = Math.min((cart[button.dataset.add] || 0)+1,99); renderCart(); openCart() })
 cartItems.addEventListener('click',event => { const button=event.target.closest('[data-action]'); if(!button) return; const id=button.dataset.id; if(button.dataset.action==='remove') delete cart[id]; else if(button.dataset.action==='plus') cart[id]=Math.min(cart[id]+1,99); else { cart[id]--; if(cart[id]<=0) delete cart[id] } renderCart() })
 search.addEventListener('input',renderProducts)
 sort.addEventListener('change',renderProducts)
@@ -58,5 +75,23 @@ backdrop.addEventListener('click',closeCart)
 document.addEventListener('keydown',event => { if(event.key==='Escape' && !drawer.hidden && !checkoutDialog.open) closeCart() })
 checkout.addEventListener('click',() => { checkoutDialog.showModal() })
 document.querySelectorAll('.close-checkout').forEach(button => button.addEventListener('click',() => checkoutDialog.close()))
-renderProducts(); renderCart()
-
+const featured = ['1344184','2306264','2409006'].map(id => products.find(p => p.id === id))
+const showcase = document.querySelector('#featured-product')
+const dots = document.querySelector('#featured-dots')
+const carousel = document.querySelector('.featured')
+const pauseButton = document.querySelector('#featured-pause')
+let featuredIndex = 0
+let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+function renderFeatured() {
+  const p = featured[featuredIndex]
+  showcase.innerHTML = `<img src="./assets/${p.id}.jpg" width="600" height="600" alt="${p.brand} ${p.name}"><div class="featured-copy"><span class="featured-kicker">OUR PICKS / ${featuredIndex + 1} OF ${featured.length}</span><h2>${p.brand} ${p.name}</h2><p class="featured-price">${priceMarkup(p)}</p><button type="button" class="featured-add" data-add="${p.id}">Add to demo cart</button></div>`
+  dots.innerHTML = featured.map((item,i) => `<button type="button" data-slide="${i}" aria-label="Show ${item.brand} ${item.name}" ${i===featuredIndex ? 'aria-current="true"' : ''}></button>`).join('')
+  pauseButton.textContent = paused ? 'Play' : 'Pause'
+  pauseButton.setAttribute('aria-label', paused ? 'Play featured products' : 'Pause featured products')
+}
+document.querySelector('#featured-prev').addEventListener('click',()=>{featuredIndex=(featuredIndex+featured.length-1)%featured.length;renderFeatured()})
+document.querySelector('#featured-next').addEventListener('click',()=>{featuredIndex=(featuredIndex+1)%featured.length;renderFeatured()})
+dots.addEventListener('click',event=>{const button=event.target.closest('[data-slide]');if(button){featuredIndex=Number(button.dataset.slide);renderFeatured()}})
+pauseButton.addEventListener('click',()=>{paused=!paused;renderFeatured()})
+setInterval(()=>{if(!paused && !carousel.matches(':hover') && !carousel.contains(document.activeElement) && !document.hidden){featuredIndex=(featuredIndex+1)%featured.length;renderFeatured()}},6000)
+renderFeatured(); renderProducts(); renderCart()
