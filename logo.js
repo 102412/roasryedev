@@ -1,0 +1,13 @@
+(() => {
+  const first = 'M 825.449219 654.5 C 825.449219 514.570312 717.808594 423.945312 550.792969 423.945312 L 261.210938 423.945312 L 261.210938 1023.945312 L 486.558594 1023.945312 L 486.558594 881.929688 L 511.558594 881.929688 L 607.738281 1023.945312 L 853.226562 1023.945312 L 726.488281 837.835938 C 790.726562 798.25 825.449219 734.015625 825.449219 654.5 Z M 486.558594 605.542969 L 538.640625 605.542969 C 564.335938 605.542969 598.710938 610.75 598.710938 654.5 C 598.710938 698.25 564.335938 703.460938 538.640625 703.460938 L 486.558594 703.460938 Z'
+  const second = 'M 565.175781 231.5 C 565.175781 91.570312 457.539062 0.945312 290.523438 0.945312 L 0.941406 0.945312 L 0.941406 600.945312 L 226.289062 600.945312 L 226.289062 458.929688 L 251.289062 458.929688 L 347.46875 600.945312 L 592.953125 600.945312 L 466.21875 414.835938 C 530.453125 375.25 565.175781 311.015625 565.175781 231.5 Z M 226.289062 182.542969 L 278.371094 182.542969 C 304.066406 182.542969 338.441406 187.75 338.441406 231.5 C 338.441406 275.25 304.066406 280.460938 278.371094 280.460938 L 226.289062 280.460938 Z'
+  function mark(id) { return `<svg class="rr-logo" viewBox="240 325 1040 725" aria-hidden="true" focusable="false"><defs><clipPath id="logo-first-${id}"><rect x="260" y="424" width="594" height="600" rx="36"/></clipPath><clipPath id="logo-second-${id}"><rect x="0" y="1" width="594" height="600" rx="36"/></clipPath></defs><path d="${first}" fill="var(--logo-primary,var(--ink))" clip-path="url(#logo-first-${id})"/><path d="${second}" transform="translate(663 423)" fill="var(--logo-secondary,var(--accent))" fill-opacity=".88" clip-path="url(#logo-second-${id})"/><path d="M 290 378 H 1169" stroke="var(--logo-line,var(--ink))" stroke-width="44" stroke-linecap="round"/></svg>` }
+  document.querySelector('.brand span').innerHTML = mark('header')
+  document.querySelector('.contact-shape span').innerHTML = mark('contact')
+  const controls = document.querySelector('#finish-controls details')
+  const section = document.createElement('div')
+  section.className = 'logo-controls'
+  section.innerHTML = '<p>Logo colors</p><label>First letter <input type="color" value="#18211d" data-logo-color="--logo-primary"></label><label>Second letter <input type="color" value="#e9502d" data-logo-color="--logo-secondary"></label><label>Top line <input type="color" value="#18211d" data-logo-color="--logo-line"></label>'
+  controls.append(section)
+  section.querySelectorAll('input').forEach(input => input.addEventListener('input', () => document.documentElement.style.setProperty(input.dataset.logoColor, input.value)))
+})()
