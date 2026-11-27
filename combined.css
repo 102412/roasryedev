@@ -3,3 +3,6 @@
 /* Clip horizontal artwork without creating a scroll container for the sticky header. */
 .app-shell{overflow:clip}.site-header{position:sticky;top:0;z-index:50}.site-header.scrolled{top:10px;margin:0 18px;width:calc(100% - 36px)}
 
+/* Fixed to the viewport so the header cannot be trapped by an ancestor's scrolling behavior. */
+.app-shell{padding-top:76px}.site-header{position:fixed;top:0;left:0;width:100%;margin:0}.site-header.scrolled{position:fixed;top:10px;left:18px;margin:0;width:calc(100% - 36px)}@media(max-width:760px){.app-shell{padding-top:67px}}
+
