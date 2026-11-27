@@ -6,3 +6,5 @@
 /* Fixed to the viewport so the header cannot be trapped by an ancestor's scrolling behavior. */
 .app-shell{padding-top:76px}.site-header{position:fixed;top:0;left:0;width:100%;margin:0}.site-header.scrolled{position:fixed;top:10px;left:18px;margin:0;width:calc(100% - 36px)}@media(max-width:760px){.app-shell{padding-top:67px}}
 
+.hero-price{font-size:14px!important;line-height:1.5!important;margin:0 0 22px!important}.hero-price strong{font-size:20px}.hero-price span{display:block;font-size:12px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.hero-pricing{width:auto;margin:0}.mini-hero .demo-action{display:inline-block;border:1px solid currentColor;font-size:6px;padding:5px}.service-explainer{max-width:720px;line-height:1.6;margin:40px 0 0}.direct-card{align-self:center;padding:clamp(28px,5vw,64px);background:var(--warm);border:1px solid var(--ink)}.direct-card h2{font:500 clamp(2rem,4vw,3.5rem)/1 var(--display-font,serif);margin:0 0 20px}.direct-card .button--outline{width:auto;margin:0}.direct-actions{display:flex;flex-wrap:wrap;gap:12px}
+

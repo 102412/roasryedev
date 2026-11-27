@@ -2,7 +2,7 @@ const contactEmail = ''
 // Web3Forms access keys are public form identifiers, not secret API credentials.
 const web3FormsAccessKey = 'af037755-3ca1-49dd-9f28-0105ea5ff166'
 const formEndpoint = web3FormsAccessKey ? 'https://api.web3forms.com/submit' : ''
-const pageTitles = { home: 'Roas Rye Development — Custom websites for local business', work: 'Work — Roas Rye Development', services: 'Services & pricing — Roas Rye Development', contact: 'Start a project — Roas Rye Development', direct: 'Direct contact — Roas Rye Development' }
+const pageTitles = { home: 'Custom Websites in Lawrenceburg & Lexington | Roas Rye Development', work: 'Website Portfolio Demos | Roas Rye Development', services: 'Website Services & Pricing | Roas Rye Development', contact: 'Contact & Request a Quote | Roas Rye Development', direct: 'Direct contact — Roas Rye Development' }
 document.querySelector('[data-view="direct"]').dataset.view = 'contact'
 document.querySelector('nav [data-route="contact"]').remove()
 document.querySelector('.nav-quote').innerHTML = 'Contact <span>↗</span>'
@@ -10,7 +10,7 @@ const views = [...document.querySelectorAll('[data-view]')]
 const nav = [...document.querySelectorAll('[data-route]')]
 const menuButton = document.querySelector('.menu-button')
 const siteNav = document.querySelector('.site-header nav')
-function route() { const next = location.hash.slice(1); const page = next === 'direct' ? 'contact' : Object.hasOwn(pageTitles, next) ? next : 'home'; views.forEach((view) => { view.hidden = view.dataset.view !== page }); nav.forEach((item) => item.classList.toggle('active', item.dataset.route === page)); document.title = pageTitles[page]; siteNav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); window.scrollTo({ top: 0, behavior: 'instant' }) }
+function route() { const next = location.hash.slice(1) || location.pathname.split('/').filter(Boolean)[0]; const page = next === 'direct' ? 'contact' : Object.hasOwn(pageTitles, next) ? next : 'home'; views.forEach((view) => { view.hidden = view.dataset.view !== page }); nav.forEach((item) => item.classList.toggle('active', item.dataset.route === page)); document.title = pageTitles[page]; siteNav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); window.scrollTo({ top: 0, behavior: 'instant' }) }
 addEventListener('hashchange', route); route()
 menuButton.addEventListener('click', () => { const open = siteNav.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)) })
 const lab = document.querySelector('.finish-lab'); const labButton = document.querySelector('.finish-lab__handle'); labButton.addEventListener('click', () => { const open = lab.classList.toggle('is-open'); labButton.setAttribute('aria-expanded', String(open)); labButton.querySelector('.chev').textContent = open ? '×' : '+' })
@@ -43,3 +43,4 @@ form.addEventListener('submit', async (event) => {
   const body = encodeURIComponent(`Name: ${data.get('name')}\nBusiness: ${data.get('business')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone') || 'Not provided'}\nWebsite: ${data.get('website') || 'Not provided'}\n\nWhat they need:\n${data.get('message')}`)
   location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`
 })
+
