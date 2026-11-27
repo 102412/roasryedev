@@ -77,21 +77,21 @@ checkout.addEventListener('click',() => { checkoutDialog.showModal() })
 document.querySelectorAll('.close-checkout').forEach(button => button.addEventListener('click',() => checkoutDialog.close()))
 const featured = ['1344184','2306264','2409006'].map(id => products.find(p => p.id === id))
 const showcase = document.querySelector('#featured-product')
-const dots = document.querySelector('#featured-dots')
 const carousel = document.querySelector('.featured')
 const pauseButton = document.querySelector('#featured-pause')
-let featuredIndex = 0
-let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-function renderFeatured() {
-  const p = featured[featuredIndex]
-  showcase.innerHTML = `<img src="./assets/${p.id}.jpg" width="600" height="600" alt="${p.brand} ${p.name}"><div class="featured-copy"><span class="featured-kicker">OUR PICKS / ${featuredIndex + 1} OF ${featured.length}</span><h2>${p.brand} ${p.name}</h2><p class="featured-price">${priceMarkup(p)}</p><button type="button" class="featured-add" data-add="${p.id}">Add to demo cart</button></div>`
-  dots.innerHTML = featured.map((item,i) => `<button type="button" data-slide="${i}" aria-label="Show ${item.brand} ${item.name}" ${i===featuredIndex ? 'aria-current="true"' : ''}></button>`).join('')
-  pauseButton.textContent = paused ? 'Play' : 'Pause'
-  pauseButton.setAttribute('aria-label', paused ? 'Play featured products' : 'Pause featured products')
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+let paused = reducedMotion.matches
+const featuredNames = ['Meat Bird Feed, 40 lb.', 'Firm Duck Flat Brim Cap', 'Classic Dog Toy, Large']
+function featuredSlides() {
+  return featured.map((p,i) => `<article class="featured-slide"><img src="./assets/${p.id}-cutout.png" width="600" height="600" alt="${p.brand} ${p.name}"><div class="featured-copy"><span class="featured-kicker">FARM FAVORITE / 0${i + 1}</span><h2>${p.brand} ${featuredNames[i]}</h2><p class="featured-price">${priceMarkup(p)}</p></div></article>`).join('')
 }
-document.querySelector('#featured-prev').addEventListener('click',()=>{featuredIndex=(featuredIndex+featured.length-1)%featured.length;renderFeatured()})
-document.querySelector('#featured-next').addEventListener('click',()=>{featuredIndex=(featuredIndex+1)%featured.length;renderFeatured()})
-dots.addEventListener('click',event=>{const button=event.target.closest('[data-slide]');if(button){featuredIndex=Number(button.dataset.slide);renderFeatured()}})
-pauseButton.addEventListener('click',()=>{paused=!paused;renderFeatured()})
-setInterval(()=>{if(!paused && !carousel.matches(':hover') && !carousel.contains(document.activeElement) && !document.hidden){featuredIndex=(featuredIndex+1)%featured.length;renderFeatured()}},6000)
-renderFeatured(); renderProducts(); renderCart()
+// The leading copy creates a seamless rightward loop and is hidden from assistive technology.
+showcase.innerHTML = `<div class="featured-group" aria-hidden="true">${featuredSlides()}</div><div class="featured-group">${featuredSlides()}</div>`
+function updateMotion() {
+  carousel.classList.toggle('is-paused', paused)
+  pauseButton.textContent = paused ? 'Play motion' : 'Pause motion'
+  pauseButton.setAttribute('aria-label', paused ? 'Play featured product motion' : 'Pause featured product motion')
+}
+pauseButton.addEventListener('click', () => { paused = !paused; updateMotion() })
+reducedMotion.addEventListener('change', event => { if(event.matches){paused=true;updateMotion()} })
+updateMotion(); renderProducts(); renderCart()
