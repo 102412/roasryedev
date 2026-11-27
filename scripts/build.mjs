@@ -13,6 +13,8 @@ for (const target of ['dist', 'outputs/roas-rye-development']) {
   rmSync(target, { recursive: true, force: true })
   mkdirSync(target, { recursive: true })
   for (const file of ['site.js','enhancements.js','gifts.js','logo.js','logo.css','direct.js','direct.css','combined.css','extra.css','gifts.css','share-preview.png']) cpSync(file, `${target}/${file}`)
+  mkdirSync(`${target}/demos`, { recursive: true })
+  cpSync('demo-barn', `${target}/demos/local-barn`, { recursive: true })
   cpSync('src/styles.css', `${target}/styles.css`)
   for (const [name, page] of Object.entries(pages)) {
     const metadata = `<meta name="description" content="${page.description}"><link rel="canonical" href="${origin}${page.path}"><meta property="og:title" content="${page.title}"><meta property="og:description" content="${page.description}"><meta property="og:type" content="website"><meta property="og:url" content="${origin}${page.path}"><meta property="og:image" content="${origin}/share-preview.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${origin}/share-preview.png">`

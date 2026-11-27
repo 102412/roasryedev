@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#253d2c">
+  <meta name="description" content="Explore a sample farm shop storefront with a simulated cart and checkout.">
+  <title>Local Barn Outfitter | Farm, feed & everyday essentials</title>
+  <link rel="stylesheet" href="./store.css">
+  <script src="./store.js" defer></script>
+</head>
+<body>
+<div class="demo-notice">PORTFOLIO DEMO <span>•</span> A sample storefront by <a href="/work/">Roas Rye Development</a></div>
+<header class="header">
+  <a class="brand" href="#top" aria-label="Local Barn Outfitter home">
+    <img class="brand-mark" src="./assets/local-barn-logo.svg" alt="" width="88" height="88">
+    <span><b>LOCAL BARN</b><small>O U T F I T T E R</small></span>
+  </a>
+  <div class="header-note"><strong>Good goods for everyday work.</strong><span>Farm, feed &amp; the folks at home.</span></div>
+  <button type="button" class="cart-toggle" aria-controls="cart-drawer" aria-expanded="false">Cart <span class="cart-count">0</span></button>
+</header>
+<nav class="navigation" aria-label="Shop departments">
+  <a href="#shop" data-nav="All">Shop all</a><a href="#shop" data-nav="Feed & poultry">Feed &amp; poultry</a><a href="#shop" data-nav="Workwear">Workwear</a><a href="#shop" data-nav="Pet">Pet supplies</a><a href="#visit">Visit the shop</a>
+</nav>
+<main id="top">
+  <section class="intro">
+    <div class="intro-copy"><p class="eyebrow">YOUR NEIGHBORHOOD FARM SHOP</p><h1>Good things for<br>the everyday.</h1><p>From the chicken coop to the back porch, find the things you reach for most.</p><a class="button button-light" href="#shop">Shop the shelves</a></div>
+    <div class="intro-aside"><div class="intro-rule"></div><span>AROUND THE FARM</span><p>Feed for the flock.<br>Gear for the work.<br>Something for the dog.</p><small>Everything you need, all in one place.</small></div>
+  </section>
+  <section id="shop" class="shop">
+    <div class="section-head"><div><p class="eyebrow">A LITTLE BIT OF EVERYTHING</p><h2>Shop the shelves.</h2><p>Everyday essentials, ready for your next project.</p></div><span class="shop-caption">FARM &amp; HOME / SAMPLE COLLECTION</span></div>
+    <div class="shop-layout">
+      <aside class="filters" aria-label="Product filters">
+        <h3>Find what you need</h3>
+        <label for="search">Search products</label><input id="search" type="search" placeholder="Search the shop" autocomplete="off">
+        <fieldset><legend>Department</legend><label><input type="radio" name="category" value="All" checked> All products</label><label><input type="radio" name="category" value="Feed & poultry"> Feed &amp; poultry</label><label><input type="radio" name="category" value="Workwear"> Workwear</label><label><input type="radio" name="category" value="Pet"> Pet supplies</label></fieldset>
+        <button class="clear-filters" type="button">Clear filters</button>
+      </aside>
+      <div class="products-area"><div class="results-bar"><p id="result-count" role="status"></p><label for="sort">Sort by <select id="sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name</option></select></label></div><div id="products" class="product-grid"></div><p id="no-results" class="no-results" hidden>No products found. Try another search or department.</p></div>
+    </div>
+  </section>
+  <section id="visit" class="visit"><div><p class="eyebrow">COME ON BY</p><h2>There's always room<br>at the barn.</h2><p>Need a hand finding something? Come in and take a look around.</p></div><div class="visit-details"><p><strong>Find us</strong><br>Store address coming soon<br>Lawrenceburg, KY area</p><p><strong>Give us a call</strong><br>Phone number coming soon</p><p class="visit-note">Address and contact details are placeholders for this demo.</p></div></section>
+</main>
+<footer class="footer"><div class="footer-top"><div><strong>LOCAL BARN OUTFITTER</strong><p>Farm, feed &amp; everyday essentials.</p></div><a href="#shop">Back to the shelves</a></div><p class="disclosure"><strong>Portfolio demo:</strong> Local Barn Outfitter is a fictional store created by <a href="/work/">Roas Rye Development</a>. No products can be purchased or reserved here. Product names, photos, and example prices are sourced from real <a href="https://www.tractorsupply.com/" target="_blank" rel="noopener noreferrer">Tractor Supply Co.</a> listings; prices and availability can change. Brands and retailers are not affiliated with or endorsing this demo. See individual product source links for details.</p></footer>
+<div class="drawer-backdrop" hidden></div>
+<aside id="cart-drawer" class="drawer" aria-label="Shopping cart" aria-hidden="true" hidden>
+  <div class="drawer-heading"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your cart</h2></div><button type="button" class="close-cart" aria-label="Close cart">×</button></div>
+  <p class="cart-demo">Demo only. No orders or payments will be processed.</p>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer"><div class="subtotal"><span>Sample subtotal</span><strong id="subtotal">$0.00</strong></div><p>Taxes and delivery aren't calculated in this demo.</p><button type="button" id="checkout" class="button button-dark" disabled>Continue to demo checkout</button></div>
+</aside>
+<dialog id="checkout-dialog" aria-labelledby="checkout-title">
+  <div class="checkout-header"><div><p class="eyebrow">DEMO CHECKOUT</p><h2 id="checkout-title">See how checkout could work.</h2></div><button type="button" class="close-checkout" aria-label="Close checkout">×</button></div>
+  <p>This is a visual demonstration. No orders are placed and no payment details are collected.</p>
+  <div class="checkout-summary"><span>Sample order subtotal</span><strong id="checkout-total"></strong></div>
+  <div class="payment-card"><span>PAYMENT METHOD</span><strong>Card payment placeholder</strong><p>A real store would connect a secure payment provider here.</p><div class="fake-card" aria-hidden="true">•••• &nbsp; •••• &nbsp; •••• &nbsp; ••••</div></div>
+  <button type="button" class="button button-dark close-checkout">Return to the shop</button>
+</dialog>
+</body></html>
+

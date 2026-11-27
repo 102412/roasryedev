@@ -17,6 +17,10 @@ Run `npm run lint` and `npm run build` before release. The deployment files are 
 - Page structure and wording are in `index.html`; integration settings are in `site.js`; visual design is in `src/styles.css` and `combined.css`. The build generates separate Home, Work, Services, and Contact pages; edit their titles, descriptions, canonical domain, sitemap and robots settings in `scripts/build.mjs`. Update the canonical domain there when a custom domain is connected.
 - The **Make it yours** tab is a live presentation control. It intentionally affects only the visit and does not persist settings.
 
+## Local Barn Outfitter demo
+
+The fictional farm shop is in `demo-barn/` and is published at `/demos/local-barn/`. Edit the product list, example prices, source links and categories in `demo-barn/store.js`; product photos and the supplied recolored logo are in `demo-barn/assets/`. The address and phone are intentionally placeholders. Prices are snapshots from the linked retailer, not live inventory. The cart is stored only for the browser session, and checkout is a visual demonstration that does not collect payment details or place orders. The demo is marked noindex. Verify permission to use product imagery before using it beyond this portfolio demo.
+
 ## Lead capture
 
 The project inquiry form uses Web3Forms. Its notification recipient and spam settings are managed in the Web3Forms dashboard; the current form is configured for the owner's Google inbox. The form reports success only when the provider confirms acceptance.
