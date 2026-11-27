@@ -92,6 +92,12 @@ function updateMotion() {
   pauseButton.textContent = paused ? 'Play motion' : 'Pause motion'
   pauseButton.setAttribute('aria-label', paused ? 'Play featured product motion' : 'Pause featured product motion')
 }
+// Changing playback rate preserves the current position, avoiding a jump on hover.
+function setCarouselSpeed(rate) {
+  showcase.getAnimations().forEach(animation => animation.updatePlaybackRate(rate))
+}
+carousel.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') setCarouselSpeed(0.35) })
+carousel.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') setCarouselSpeed(1) })
 pauseButton.addEventListener('click', () => { paused = !paused; updateMotion() })
 reducedMotion.addEventListener('change', event => { if(event.matches){paused=true;updateMotion()} })
 updateMotion(); renderProducts(); renderCart()
