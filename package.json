@@ -7,6 +7,6 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "lint": "node scripts/check.mjs",
-    "test": "node scripts/check.mjs"
+    "test": "node scripts/check.mjs && node scripts/test-ai.mjs"
   }
 }
