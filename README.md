@@ -37,5 +37,5 @@ This is Vercel-compatible: import the repository, use `npm run build` and output
 
 ## Search and local marketing
 
-The build creates canonical URLs, page-specific titles and descriptions, `sitemap.xml`, `robots.txt`, and a share image. The service area is Lawrenceburg, Lexington, and surrounding communities. Verify the site in Google Search Console and submit the sitemap when account access permits. Add real demo URLs and client-approved work when available; the current examples are concepts. A Google Business Profile requires eligibility and verification.
+The build creates canonical URLs, page-specific titles and descriptions, `sitemap.xml`, `robots.txt`, and a share image. The service area is Lawrenceburg, Lexington, and surrounding communities. The current Vercel domain is verified in Google Search Console for the owner account, and the sitemap was submitted. Keep the Google verification meta tag in place; repeat verification and update the canonical domain if the site moves to a custom domain. Add real demo URLs and client-approved work when available; the current examples are concepts. A Google Business Profile requires eligibility and verification.
 
