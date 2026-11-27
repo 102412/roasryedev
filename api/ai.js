@@ -45,7 +45,7 @@ function pageText(html) {
 async function askOpenRouter(prompt, key) {
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(30000),
-    body: JSON.stringify({ model: 'openrouter/free', messages: [{ role: 'user', content: prompt }], response_format: { type: 'json_object' }, max_tokens: 400, temperature: 0.3 }),
+    body: JSON.stringify({ model: 'openrouter/free', messages: [{ role: 'user', content: prompt }], response_format: { type: 'json_object' }, reasoning: { enabled: false }, max_tokens: 2048, temperature: 0.3 }),
   })
   if (!response.ok) throw new Error('AI service is temporarily unavailable.')
   const result = await response.json()
