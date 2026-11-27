@@ -26,7 +26,7 @@ async function fetchPublicPage(value) {
   const ipv4 = addresses.find(item => item.family === 4)
   if (!ipv4 || addresses.some(item => !isPublicAddress(item.address))) throw new Error('This website address cannot be checked safely.')
   return await new Promise((resolve, reject) => {
-    const request = https.get(url, { lookup: (_hostname, _options, callback) => callback(null, ipv4.address, 4), headers: { 'User-Agent': 'RoasRyeWebsitePreview/1.0', Accept: 'text/html' }, timeout: 6000 }, response => {
+    const request = https.get(url, { lookup: (_hostname, options, callback) => options.all ? callback(null, [ipv4]) : callback(null, ipv4.address, 4), headers: { 'User-Agent': 'RoasRyeWebsitePreview/1.0', Accept: 'text/html' }, timeout: 6000 }, response => {
       if (response.statusCode !== 200 || !/^text\/html\b/i.test(response.headers['content-type'] || '')) { response.resume(); reject(new Error('The website could not be read.')); return }
       let size = 0; const chunks = []
       response.on('data', chunk => { size += chunk.length; if (size > 250000) { request.destroy(new Error('The website is too large to preview.')); return } chunks.push(chunk) })
