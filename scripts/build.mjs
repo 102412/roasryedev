@@ -5,6 +5,8 @@ for (const target of targets) {
   mkdirSync(target, { recursive: true })
   cpSync('index.html', `${target}/index.html`)
   cpSync('site.js', `${target}/site.js`)
+  cpSync('enhancements.js', `${target}/enhancements.js`)
+  cpSync('extra.css', `${target}/extra.css`)
   cpSync('src/styles.css', `${target}/styles.css`)
   if (target.startsWith('outputs/')) cpSync('README.md', `${target}/README.md`)
 }

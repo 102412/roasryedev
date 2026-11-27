@@ -25,6 +25,10 @@ No contact email or form endpoint has been supplied, so the public form does not
 2. For a provider, put its public form endpoint in `formEndpoint` in `site.js`. The form sends `multipart/form-data`, shows a loading state, and displays success only for an accepted HTTP response.
 3. If using a protected provider, keep its secret/API key on a serverless function—not in this frontend. Point `formEndpoint` at that function.
 
+## Future AI and website previews
+
+`enhancements.js` contains empty `designEndpoint` and `websiteAnalysisEndpoint` settings. The design endpoint accepts a JSON `prompt` and returns approved color variables. The website analysis endpoint accepts a JSON `url` and returns an HTTPS `thumbnail` and/or `description`; the visitor must opt in to include the description. These features are inactive until secure server endpoints are supplied. The website fetcher must validate URLs and block private/internal network addresses, redirects to them, and oversized responses. Keep credentials server-side.
+
 ## Deploy
 
 This is Vercel-compatible: import the repository, use `npm run build` and output folder `dist`. No environment variables are needed for the frontend as delivered.
