@@ -1,6 +1,6 @@
 const contactEmail = ''
 const formEndpoint = ''
-const pageTitles = { home: 'Roas Rye Development — Custom websites for local business', work: 'Work — Roas Rye Development', services: 'Services & pricing — Roas Rye Development', contact: 'Start a project — Roas Rye Development' }
+const pageTitles = { home: 'Roas Rye Development — Custom websites for local business', work: 'Work — Roas Rye Development', services: 'Services & pricing — Roas Rye Development', contact: 'Start a project — Roas Rye Development', direct: 'Direct contact — Roas Rye Development' }
 const views = [...document.querySelectorAll('[data-view]')]
 const nav = [...document.querySelectorAll('[data-route]')]
 const menuButton = document.querySelector('.menu-button')
