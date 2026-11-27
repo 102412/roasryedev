@@ -19,11 +19,11 @@ Run `npm run lint` and `npm run build` before release. The deployment files are 
 
 ## Lead capture
 
-No contact email or form endpoint has been supplied, so the public form does not claim to submit successfully.
+The project inquiry form uses Web3Forms. Its notification recipient and spam settings are managed in the Web3Forms dashboard; the current form is configured for the owner's Google inbox. The form reports success only when the provider confirms acceptance.
 
 1. For email handoff, put the supplied address in `contactEmail` in `site.js`; the completed fields open the visitor’s email app with a drafted message.
-2. For a provider, put its public form endpoint in `formEndpoint` in `site.js`. The form sends `multipart/form-data`, shows a loading state, and displays success only for an accepted HTTP response.
-3. If using a protected provider, keep its secret/API key on a serverless function—not in this frontend. Point `formEndpoint` at that function.
+2. For Web3Forms, add the form's public access key to `web3FormsAccessKey` in `site.js`. The form sends `multipart/form-data`, shows a loading state, and displays success only after Web3Forms confirms acceptance. Web3Forms describes this key as a public form identifier, not a secret API key.
+3. Never put secret provider API keys in frontend code.
 
 ## Future AI and website previews
 
