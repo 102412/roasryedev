@@ -11,6 +11,7 @@ for (const target of targets) {
   cpSync('logo.css', `${target}/logo.css`)
   cpSync('direct.js', `${target}/direct.js`)
   cpSync('direct.css', `${target}/direct.css`)
+  cpSync('combined.css', `${target}/combined.css`)
   cpSync('extra.css', `${target}/extra.css`)
   cpSync('gifts.css', `${target}/gifts.css`)
   cpSync('src/styles.css', `${target}/styles.css`)

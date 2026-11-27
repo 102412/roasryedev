@@ -1,11 +1,14 @@
 const contactEmail = ''
 const formEndpoint = ''
 const pageTitles = { home: 'Roas Rye Development — Custom websites for local business', work: 'Work — Roas Rye Development', services: 'Services & pricing — Roas Rye Development', contact: 'Start a project — Roas Rye Development', direct: 'Direct contact — Roas Rye Development' }
+document.querySelector('[data-view="direct"]').dataset.view = 'contact'
+document.querySelector('nav [data-route="contact"]').remove()
+document.querySelector('.nav-quote').innerHTML = 'Contact <span>↗</span>'
 const views = [...document.querySelectorAll('[data-view]')]
 const nav = [...document.querySelectorAll('[data-route]')]
 const menuButton = document.querySelector('.menu-button')
 const siteNav = document.querySelector('.site-header nav')
-function route() { const next = location.hash.slice(1); const page = Object.hasOwn(pageTitles, next) ? next : 'home'; views.forEach((view) => { view.hidden = view.dataset.view !== page }); nav.forEach((item) => item.classList.toggle('active', item.dataset.route === page)); document.title = pageTitles[page]; siteNav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); window.scrollTo({ top: 0, behavior: 'instant' }) }
+function route() { const next = location.hash.slice(1); const page = next === 'direct' ? 'contact' : Object.hasOwn(pageTitles, next) ? next : 'home'; views.forEach((view) => { view.hidden = view.dataset.view !== page }); nav.forEach((item) => item.classList.toggle('active', item.dataset.route === page)); document.title = pageTitles[page]; siteNav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); window.scrollTo({ top: 0, behavior: 'instant' }) }
 addEventListener('hashchange', route); route()
 menuButton.addEventListener('click', () => { const open = siteNav.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)) })
 const lab = document.querySelector('.finish-lab'); const labButton = document.querySelector('.finish-lab__handle'); labButton.addEventListener('click', () => { const open = lab.classList.toggle('is-open'); labButton.setAttribute('aria-expanded', String(open)); labButton.querySelector('.chev').textContent = open ? '×' : '+' })

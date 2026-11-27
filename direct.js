@@ -1,12 +1,13 @@
 (() => {
-  const nav = document.querySelector('.site-header nav')
-  const link = document.createElement('a')
-  link.href = '#direct'; link.dataset.route = 'direct'; link.textContent = 'Direct contact'
-  nav.insertBefore(link, nav.querySelector('.nav-quote'))
+  const directHeading = document.querySelector('.direct-intro h1')
+  const sectionHeading = document.createElement('h2')
+  sectionHeading.textContent = directHeading.textContent
+  directHeading.replaceWith(sectionHeading)
   const contactIntro = document.querySelector('.contact__intro')
-  const directLink = document.createElement('a')
-  directLink.href = '#direct'; directLink.className = 'text-link direct-link'; directLink.textContent = 'Prefer to call or text? Open direct contact ↗'
+  const directLink = document.createElement('button')
+  directLink.type = 'button'; directLink.className = 'button button--dark direct-link'; directLink.textContent = 'Call or text instead ↓'
   contactIntro.insertBefore(directLink, contactIntro.querySelector('.contact-shape'))
+  directLink.addEventListener('click', () => document.querySelector('.direct-page').scrollIntoView({behavior:'smooth',block:'start'}))
   const form = document.querySelector('#vault-form')
   const input = document.querySelector('#visitor-phone')
   const error = document.querySelector('#phone-error')
@@ -19,5 +20,5 @@
     error.textContent = ''; input.removeAttribute('aria-invalid'); form.hidden = true; panel.classList.add('is-open'); reveal.hidden = false; reveal.focus()
   })
   document.querySelector('.vault-lock').addEventListener('click', () => { reveal.hidden = true; panel.classList.remove('is-open'); form.hidden = false; input.focus() })
-  addEventListener('hashchange', () => { if (location.hash !== '#direct') { form.reset(); form.hidden = false; reveal.hidden = true; panel.classList.remove('is-open'); error.textContent = ''; input.removeAttribute('aria-invalid') } })
+  addEventListener('hashchange', () => { if (location.hash !== '#contact' && location.hash !== '#direct') { form.reset(); form.hidden = false; reveal.hidden = true; panel.classList.remove('is-open'); error.textContent = ''; input.removeAttribute('aria-invalid') } })
 })()
